@@ -1,0 +1,12 @@
+<svg height="142" width="720" xmlns="http://www.w3.org/2000/svg">
+<rect height="142" fill="#555" width="720"></rect>
+<text fill="#7f7" font-family="Courier New" font-size="12" xml:space="preserve">
+<tspan x="10" y="26">  0.  2017-04-04 10:09:34 +0000    11341 byte  .</tspan>
+<tspan x="10" y="42">  1.  2017-04-04 10:09:34 +0000     1087 byte  LICENSE</tspan>
+<tspan x="10" y="58">  2.  2017-04-04 10:09:34 +0000     2788 byte  package.json</tspan>
+<tspan x="10" y="74">  3.  2017-04-04 10:09:34 +0000     4724 byte  src/TapEventPlugin.js</tspan>
+<tspan x="10" y="90">  4.  2017-04-04 10:09:34 +0000     1552 byte  src/TouchEventUtils.js</tspan>
+<tspan x="10" y="106">  5.  2017-04-04 10:09:34 +0000      151 byte  src/defaultClickRejectionStrategy.js</tspan>
+<tspan x="10" y="122">  6.  2017-04-04 10:09:34 +0000     1039 byte  src/injectTapEventPlugin.js</tspan>
+</text>
+</svg>
