@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="http://facebook.github.io/react"
-
-    >react-tap-event-plugin (v2.0.1)</a>
+    <a href="http://facebook.github.io/react">react-tap-event-plugin (v2.0.1)</a>
 </h1>
 <h4>Facebook's TapEventPlugin, temporarily available on npm until its made public in their repo</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.react-tap-event-plugin">module react-tap-event-plugin</a><ol>
 
@@ -174,21 +167,21 @@
   strategyOverrides = strategyOverrides || {}
   var shouldRejectClick = strategyOverrides.shouldRejectClick || defaultClickRejectionStrategy;
 
-  if (process.env.NODE_ENV !== &#x27;production&#x27;) {
+  if (process.env.NODE_ENV !== 'production') {
     invariant(
       !alreadyInjected,
-      &#x27;injectTapEventPlugin(): Can only be called once per application lifecycle.\n\n\
+      'injectTapEventPlugin(): Can only be called once per application lifecycle.\n\n\
 It is recommended to call injectTapEventPlugin() just before you call \
 ReactDOM.render(). If you are using an external library which calls injectTapEventPlugin() \
-itself, please contact the maintainer as it shouldn\&#x27;t be called in library code and \
-should be injected by the application.&#x27;
+itself, please contact the maintainer as it shouldn\'t be called in library code and \
+should be injected by the application.'
     )
   }
 
   alreadyInjected = true;
 
-  require(&#x27;react-dom/lib/EventPluginHub&#x27;).injection.injectEventPluginsByName({
-    &#x27;TapEventPlugin&#x27;:       require(&#x27;./TapEventPlugin.js&#x27;)(shouldRejectClick)
+  require('react-dom/lib/EventPluginHub').injection.injectEventPluginsByName({
+    'TapEventPlugin':       require('./TapEventPlugin.js')(shouldRejectClick)
   });
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -226,7 +219,7 @@ should be injected by the application.&#x27;
       nativeEventTarget
     ) {
 
-      if (!isStartish(topLevelType) &#x26;&#x26; !isEndish(topLevelType)) {
+      if (!isStartish(topLevelType) &amp;&amp; !isEndish(topLevelType)) {
         return null;
       }
 
@@ -240,7 +233,7 @@ should be injected by the application.&#x27;
 
       var event = null;
       var distance = getDistance(startCoords, nativeEvent);
-      if (isEndish(topLevelType) &#x26;&#x26; distance &#x3c; tapMoveThreshold) {
+      if (isEndish(topLevelType) &amp;&amp; distance &lt; tapMoveThreshold) {
         event = SyntheticUIEvent.getPooled(
           eventTypes.touchTap,
           targetInst,
@@ -274,7 +267,7 @@ should be injected by the application.&#x27;
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">defaultClickRejectionStrategy = function (lastTouchEvent, clickTimestamp) {
-  if (lastTouchEvent &#x26;&#x26; (clickTimestamp - lastTouchEvent) &#x3c; 750) {
+  if (lastTouchEvent &amp;&amp; (clickTimestamp - lastTouchEvent) &lt; 750) {
     return true;
   }
 }</pre></li>
@@ -335,7 +328,7 @@ should be injected by the application.&#x27;
       nativeEventTarget
     ) {
 
-      if (!isStartish(topLevelType) &#x26;&#x26; !isEndish(topLevelType)) {
+      if (!isStartish(topLevelType) &amp;&amp; !isEndish(topLevelType)) {
         return null;
       }
 
@@ -349,7 +342,7 @@ should be injected by the application.&#x27;
 
       var event = null;
       var distance = getDistance(startCoords, nativeEvent);
-      if (isEndish(topLevelType) &#x26;&#x26; distance &#x3c; tapMoveThreshold) {
+      if (isEndish(topLevelType) &amp;&amp; distance &lt; tapMoveThreshold) {
         event = SyntheticUIEvent.getPooled(
           eventTypes.touchTap,
           targetInst,
@@ -390,18 +383,18 @@ should be injected by the application.&#x27;
     <li>description and source-code<pre class="apidocCodePre">extractSingleTouch = function (nativeEvent) {
   var touches = nativeEvent.touches;
   var changedTouches = nativeEvent.changedTouches;
-  var hasTouches = touches &#x26;&#x26; touches.length &#x3e; 0;
-  var hasChangedTouches = changedTouches &#x26;&#x26; changedTouches.length &#x3e; 0;
+  var hasTouches = touches &amp;&amp; touches.length &gt; 0;
+  var hasChangedTouches = changedTouches &amp;&amp; changedTouches.length &gt; 0;
 
-  return !hasTouches &#x26;&#x26; hasChangedTouches ? changedTouches[0] :
+  return !hasTouches &amp;&amp; hasChangedTouches ? changedTouches[0] :
          hasTouches ? touches[0] :
          nativeEvent;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
 var Axis = {
-  x: {page: &#x27;pageX&#x27;, client: &#x27;clientX&#x27;, envScroll: &#x27;currentPageScrollLeft&#x27;},
-  y: {page: &#x27;pageY&#x27;, client: &#x27;clientY&#x27;, envScroll: &#x27;currentPageScrollTop&#x27;}
+  x: {page: 'pageX', client: 'clientX', envScroll: 'currentPageScrollLeft'},
+  y: {page: 'pageY', client: 'clientY', envScroll: 'currentPageScrollTop'}
 };
 
 function getAxisCoordOfEvent(axis, nativeEvent) {
@@ -431,7 +424,7 @@ function getAxisCoordOfEvent(axis, nativeEvent) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">defaultClickRejectionStrategy = function (lastTouchEvent, clickTimestamp) {
-  if (lastTouchEvent &#x26;&#x26; (clickTimestamp - lastTouchEvent) &#x3c; 750) {
+  if (lastTouchEvent &amp;&amp; (clickTimestamp - lastTouchEvent) &lt; 750) {
     return true;
   }
 }</pre></li>
@@ -465,3 +458,4 @@ function getAxisCoordOfEvent(axis, nativeEvent) {
     ]
 </div>
 </div>
+</body></html>

@@ -63,7 +63,56 @@
 
         <li>
 
+            <a class="apidocElementLiA" href="#apidoc.element.react-tap-event-plugin.react-tap-event-plugin">
+            function <span class="apidocSignatureSpan"></span>react-tap-event-plugin
+            <span class="apidocSignatureSpan">(strategyOverrides)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.react-tap-event-plugin.TapEventPlugin">
+            function <span class="apidocSignatureSpan">react-tap-event-plugin.</span>TapEventPlugin
+            <span class="apidocSignatureSpan">(shouldRejectClick)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.react-tap-event-plugin.defaultClickRejectionStrategy">
+            function <span class="apidocSignatureSpan">react-tap-event-plugin.</span>defaultClickRejectionStrategy
+            <span class="apidocSignatureSpan">(lastTouchEvent, clickTimestamp)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.react-tap-event-plugin.toString">
+            function <span class="apidocSignatureSpan">react-tap-event-plugin.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">react-tap-event-plugin.</span>TouchEventUtils</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.react-tap-event-plugin.TapEventPlugin">module react-tap-event-plugin.TapEventPlugin</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.react-tap-event-plugin.TapEventPlugin.TapEventPlugin">
+            function <span class="apidocSignatureSpan">react-tap-event-plugin.</span>TapEventPlugin
+            <span class="apidocSignatureSpan">(shouldRejectClick)</span>
+            </a>
 
         </li>
 
@@ -82,11 +131,247 @@
 
     </ol></li>
 
+    <li class="apidocModuleLi"><a href="#apidoc.module.react-tap-event-plugin.defaultClickRejectionStrategy">module react-tap-event-plugin.defaultClickRejectionStrategy</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.react-tap-event-plugin.defaultClickRejectionStrategy.defaultClickRejectionStrategy">
+            function <span class="apidocSignatureSpan">react-tap-event-plugin.</span>defaultClickRejectionStrategy
+            <span class="apidocSignatureSpan">(lastTouchEvent, clickTimestamp)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.react-tap-event-plugin.toString">module react-tap-event-plugin.toString</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.react-tap-event-plugin.toString.toString">
+            function <span class="apidocSignatureSpan">react-tap-event-plugin.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
 </ol></div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.react-tap-event-plugin" id="apidoc.module.react-tap-event-plugin">module react-tap-event-plugin</a></h1>
 
+
+    <h2>
+        <a href="#apidoc.element.react-tap-event-plugin.react-tap-event-plugin" id="apidoc.element.react-tap-event-plugin.react-tap-event-plugin">
+        function <span class="apidocSignatureSpan"></span>react-tap-event-plugin
+        <span class="apidocSignatureSpan">(strategyOverrides)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function injectTapEventPlugin(strategyOverrides) {
+  strategyOverrides = strategyOverrides || {}
+  var shouldRejectClick = strategyOverrides.shouldRejectClick || defaultClickRejectionStrategy;
+
+  if (process.env.NODE_ENV !== &#x27;production&#x27;) {
+    invariant(
+      !alreadyInjected,
+      &#x27;injectTapEventPlugin(): Can only be called once per application lifecycle.\n\n\
+It is recommended to call injectTapEventPlugin() just before you call \
+ReactDOM.render(). If you are using an external library which calls injectTapEventPlugin() \
+itself, please contact the maintainer as it shouldn\&#x27;t be called in library code and \
+should be injected by the application.&#x27;
+    )
+  }
+
+  alreadyInjected = true;
+
+  require(&#x27;react-dom/lib/EventPluginHub&#x27;).injection.injectEventPluginsByName({
+    &#x27;TapEventPlugin&#x27;:       require(&#x27;./TapEventPlugin.js&#x27;)(shouldRejectClick)
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.react-tap-event-plugin.TapEventPlugin" id="apidoc.element.react-tap-event-plugin.TapEventPlugin">
+        function <span class="apidocSignatureSpan">react-tap-event-plugin.</span>TapEventPlugin
+        <span class="apidocSignatureSpan">(shouldRejectClick)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function createTapEventPlugin(shouldRejectClick) {
+  return {
+
+    tapMoveThreshold: tapMoveThreshold,
+
+    ignoreMouseThreshold: ignoreMouseThreshold,
+
+    eventTypes: eventTypes,
+
+<span class="apidocCodeCommentSpan">    /**
+     * @param {string} topLevelType Record from `EventConstants`.
+     * @param {DOMEventTarget} targetInst The listening component root node.
+     * @param {object} nativeEvent Native browser event.
+     * @return {*} An accumulation of synthetic events.
+     * @see {EventPluginHub.extractEvents}
+     */
+</span>    extractEvents: function(
+      topLevelType,
+      targetInst,
+      nativeEvent,
+      nativeEventTarget
+    ) {
+
+      if (!isStartish(topLevelType) &#x26;&#x26; !isEndish(topLevelType)) {
+        return null;
+      }
+
+      if (isTouch(topLevelType)) {
+        lastTouchEvent = now();
+      } else {
+        if (shouldRejectClick(lastTouchEvent, now())) {
+          return null;
+        }
+      }
+
+      var event = null;
+      var distance = getDistance(startCoords, nativeEvent);
+      if (isEndish(topLevelType) &#x26;&#x26; distance &#x3c; tapMoveThreshold) {
+        event = SyntheticUIEvent.getPooled(
+          eventTypes.touchTap,
+          targetInst,
+          nativeEvent,
+          nativeEventTarget
+        );
+      }
+      if (isStartish(topLevelType)) {
+        startCoords.x = getAxisCoordOfEvent(Axis.x, nativeEvent);
+        startCoords.y = getAxisCoordOfEvent(Axis.y, nativeEvent);
+      } else if (isEndish(topLevelType)) {
+        startCoords.x = 0;
+        startCoords.y = 0;
+      }
+      EventPropagators.accumulateTwoPhaseDispatches(event);
+      return event;
+    }
+
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.react-tap-event-plugin.defaultClickRejectionStrategy" id="apidoc.element.react-tap-event-plugin.defaultClickRejectionStrategy">
+        function <span class="apidocSignatureSpan">react-tap-event-plugin.</span>defaultClickRejectionStrategy
+        <span class="apidocSignatureSpan">(lastTouchEvent, clickTimestamp)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">defaultClickRejectionStrategy = function (lastTouchEvent, clickTimestamp) {
+  if (lastTouchEvent &#x26;&#x26; (clickTimestamp - lastTouchEvent) &#x3c; 750) {
+    return true;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.react-tap-event-plugin.toString" id="apidoc.element.react-tap-event-plugin.toString">
+        function <span class="apidocSignatureSpan">react-tap-event-plugin.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return text;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.react-tap-event-plugin.TapEventPlugin" id="apidoc.module.react-tap-event-plugin.TapEventPlugin">module react-tap-event-plugin.TapEventPlugin</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.react-tap-event-plugin.TapEventPlugin.TapEventPlugin" id="apidoc.element.react-tap-event-plugin.TapEventPlugin.TapEventPlugin">
+        function <span class="apidocSignatureSpan">react-tap-event-plugin.</span>TapEventPlugin
+        <span class="apidocSignatureSpan">(shouldRejectClick)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function createTapEventPlugin(shouldRejectClick) {
+  return {
+
+    tapMoveThreshold: tapMoveThreshold,
+
+    ignoreMouseThreshold: ignoreMouseThreshold,
+
+    eventTypes: eventTypes,
+
+<span class="apidocCodeCommentSpan">    /**
+     * @param {string} topLevelType Record from `EventConstants`.
+     * @param {DOMEventTarget} targetInst The listening component root node.
+     * @param {object} nativeEvent Native browser event.
+     * @return {*} An accumulation of synthetic events.
+     * @see {EventPluginHub.extractEvents}
+     */
+</span>    extractEvents: function(
+      topLevelType,
+      targetInst,
+      nativeEvent,
+      nativeEventTarget
+    ) {
+
+      if (!isStartish(topLevelType) &#x26;&#x26; !isEndish(topLevelType)) {
+        return null;
+      }
+
+      if (isTouch(topLevelType)) {
+        lastTouchEvent = now();
+      } else {
+        if (shouldRejectClick(lastTouchEvent, now())) {
+          return null;
+        }
+      }
+
+      var event = null;
+      var distance = getDistance(startCoords, nativeEvent);
+      if (isEndish(topLevelType) &#x26;&#x26; distance &#x3c; tapMoveThreshold) {
+        event = SyntheticUIEvent.getPooled(
+          eventTypes.touchTap,
+          targetInst,
+          nativeEvent,
+          nativeEventTarget
+        );
+      }
+      if (isStartish(topLevelType)) {
+        startCoords.x = getAxisCoordOfEvent(Axis.x, nativeEvent);
+        startCoords.y = getAxisCoordOfEvent(Axis.y, nativeEvent);
+      } else if (isEndish(topLevelType)) {
+        startCoords.x = 0;
+        startCoords.y = 0;
+      }
+      EventPropagators.accumulateTwoPhaseDispatches(event);
+      return event;
+    }
+
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
 
 
 </div>
@@ -129,6 +414,46 @@ function getAxisCoordOfEvent(axis, nativeEvent) {
     nativeEvent[axis.client] + ViewportMetrics[axis.envScroll];
 }
 ...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.react-tap-event-plugin.defaultClickRejectionStrategy" id="apidoc.module.react-tap-event-plugin.defaultClickRejectionStrategy">module react-tap-event-plugin.defaultClickRejectionStrategy</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.react-tap-event-plugin.defaultClickRejectionStrategy.defaultClickRejectionStrategy" id="apidoc.element.react-tap-event-plugin.defaultClickRejectionStrategy.defaultClickRejectionStrategy">
+        function <span class="apidocSignatureSpan">react-tap-event-plugin.</span>defaultClickRejectionStrategy
+        <span class="apidocSignatureSpan">(lastTouchEvent, clickTimestamp)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">defaultClickRejectionStrategy = function (lastTouchEvent, clickTimestamp) {
+  if (lastTouchEvent &#x26;&#x26; (clickTimestamp - lastTouchEvent) &#x3c; 750) {
+    return true;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.react-tap-event-plugin.toString" id="apidoc.module.react-tap-event-plugin.toString">module react-tap-event-plugin.toString</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.react-tap-event-plugin.toString.toString" id="apidoc.element.react-tap-event-plugin.toString.toString">
+        function <span class="apidocSignatureSpan">react-tap-event-plugin.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
 
