@@ -1,6 +1,6 @@
 # npmdoc-react-tap-event-plugin
 
-#### api documentation for  [react-tap-event-plugin (v2.0.1)](http://facebook.github.io/react)  [![npm package](https://img.shields.io/npm/v/npmdoc-react-tap-event-plugin.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-react-tap-event-plugin) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-react-tap-event-plugin.svg)](https://travis-ci.org/npmdoc/node-npmdoc-react-tap-event-plugin)
+#### basic api documentation for  [react-tap-event-plugin (v2.0.1)](http://facebook.github.io/react)  [![npm package](https://img.shields.io/npm/v/npmdoc-react-tap-event-plugin.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-react-tap-event-plugin) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-react-tap-event-plugin.svg)](https://travis-ci.org/npmdoc/node-npmdoc-react-tap-event-plugin)
 
 #### Facebook's TapEventPlugin, temporarily available on npm until its made public in their repo
 
@@ -72,7 +72,8 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "version": "2.0.1"
+    "version": "2.0.1",
+    "bin": {}
 }
 ```
 
